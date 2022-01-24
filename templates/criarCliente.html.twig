@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Cadastrar Cliente{% endblock %}
+
+{% block body %}
+    <h1>Cadastrar novo cliente</h1>
+    <div class='card mt-4'>
+        <div class='card-body'>
+            {{ form_start(form) }}
+                {{ form_row(form.nome, {
+                    label: 'Nome completo:',
+                    attr: {
+                        placeholder: 'Digite o nome do cliente'
+                    }
+                })}}
+                {{ form_row(form.genero, {
+                    label: 'Gênero:'
+                })}}
+                {{ form_row(form.dataNasc, {
+                    label: 'Data de nascimento:'
+                })}}
+                {{ form_row(form.cpf, {
+                    label: 'CPF:',
+                    attr: {
+                        placeholder: '_ _ _ . _ _ _ . _ _ _ - _ _'
+                    }
+                })}}
+                {{ form_row(form.telefone, {
+                    label: 'Número de telefone:',
+                    attr: {
+                        placeholder: '(_ _) 9  _ _ _ _ - _ _ _ _'
+                    }
+                })}}
+                {{ form_row(form.notif_whats, {
+                    label: false
+                })}}
+                {{ form_row(form.email, {
+                    label: 'E-mail',
+                    attr: {
+                        placeholder: 'Digite o email do cliente'
+                    }
+                })}}
+                {{ form_row(form.emails_promocionais, {
+                    label: false
+                })}}
+                {{ form_row(form.senha, {
+                    label: 'Senha:'
+                })}}
+                {{ form_row(form.save) }}
+            {{ form_end(form) }}
+        </div>
+    </div>
+{% endblock %}

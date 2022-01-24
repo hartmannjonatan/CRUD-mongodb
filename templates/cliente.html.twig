@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Clientes{% endblock %}
+
+{% block body %}
+    <div class='card mt-4'>
+        <div class='card-body'>
+            <a href='{{path('cliente-create')}}' class='btn btn-success'>Cadastrar novo cliente</a>
+        <div>
+    </div>
+    {% if clientes is defined%}
+        <table class='table table-hover mt-2 table-responsive'>
+            <thead>
+                <tr>
+                    <th scope="col">Nome</th>
+                    <th scope="col">Gênero</th>
+                    <th scope="col">CPF</th>
+                    <th scope="col">Data de nascimento</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Telefone</th>
+                    <th scope="col">Senha</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for cliente in clientes %}
+
+                    <tr>
+                        <td>{{cliente.nome}}</td>
+                        <td>{{cliente.genero}}</td>
+                        <td>{{cliente.cpf}}</td>
+                        <td>{{ cliente.dataNasc|format_date() }}</td>
+                        <td>{{cliente.email}}</td>
+                        <td>{{cliente.telefone}}</td>
+                        <td>{{cliente.senha}}</td>
+                        <td>
+                            <a href='update/{{cliente.id}}'><img src="{{ asset('images/edit.png') }} " width='25' class='icon-crud'></a>
+                            <a href='delete/{{cliente.id}}'><img src="{{ asset('images/delete.png') }}" width='20' class='icon-crud'></a>
+                        </td>
+                    <tr>
+
+                {% endfor %}
+            </tbody>
+
+        </table>
+    {% else %}
+        <h4>Não há nenhum cliente cadastrado, clique no botão acima para cadastrar!</h4>
+    {% endif %}
+
+{% endblock %}
